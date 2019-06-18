@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Read(All)</title>
+        <style>
+            *{
+                margin:5px;
+                padding:0px;
+            }
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 75%;
+                text-align: center;
+                }
+
+            td, th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+                }
+
+            tr:nth-child(even) {
+                background-color: #dddddd;
+                }
+            ul{
+                    list-style-type: none;
+                    margin-left: 8px;
+                    padding: 0px;
+                    overflow:hidden;
+                }
+            li{
+                float: left;
+                margin-right:5px;
+            }
+            li a {
+                    display: inline;
+                    text-align: center;
+                    
+                }
+        </style>
+    </head>
+    <body>
+        <h1>All Users</h1>
+        
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Created At</th>
+                <th>Actions</th>
+            </tr>
+            <tbody>
+                {% for friend in all_friends %}
+                <tr>
+                    <td><a href="#id">{{friend.id}}</a></td>
+                    <td>{{ friend["first_name"] }} {{ friend["last_name"] }}</td>
+                    <td>{{ friend["email"] }}</td>
+                    <td>{{friend["created_at"]}}</td>
+                    <td>
+                        <ul>
+                            <li><a href="/users/{{friend.id}}">Show</a><span> | </span></li>
+                            <li><a href="/users/{{friend.id}}/edit">Edit</a><span> | </span></li>
+                            <li><a href="/users/{{friend.id}}/destroy">Delete</a></li>
+                        </ul>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+            <br>
+            <div>
+            <a href="/users/new">Add a New User</a>
+            </div>
+    </body>
+</html>

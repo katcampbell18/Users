@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Update</title>
+        <style>
+            body{
+                text-align: center;
+            }
+            .home{
+                margin-left: 400px;
+            }
+            .label {
+                margin-right: 95px;
+            }
+            .label1{
+                margin-right: 130px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Edit User {{user.id}}</h1>
+        <div class="home"><a href="/users">Home</a></div>
+            <form action="/users/{{user.id}}/update" method="post">
+                <!-- hidden is used to differentiate between forms -->
+                <!-- <input type="hidden" name="update_user" value="{{user.id}}"> -->
+                <p class="label">First Name:</p>
+                <p><input type="text" name="fname" value="{{user.first_name}}"></p>
+                <p class="label">Last Name:</p>
+                <p><input type="text" name="lname" value="{{user.last_name}}"></p>
+                <p class="label1">Email:</p>
+                <p><input type="text" name="email" value="{{user.email}}"></p>
+                <br><br><br>
+                <input type="submit" value="Update">
+            </form>
+            <br><br>
+            <!-- {user.id} refers to field of friend table to select info for -->
+        <a href="/users/{{user.id}}">Show User</a>
+    </body>
+</html>

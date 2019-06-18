@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Read (One)</title>
+        <style>
+            body{
+                padding: 20px;
+            }
+            .home{
+                /* text-align: right; */
+                display:inline-block;
+                margin-left: 200px; 
+            }
+            h1{
+                width: 300px;
+                padding: 0px;
+                display:inline-block;
+            }
+            ul{
+                list-style-type: none;
+                padding: 20px;
+                margin: 20px;   
+            }
+            li{
+                float: left;
+            }
+            li a{
+                display: inline;
+                padding: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- {user.id} references field of friends table to select out -->
+        <h1>User {{user.id}}</h1>
+        <div class = "home"><a href="/users">Home</a></div>
+        <form action="/users/<int:id>">
+            <input type="hidden" name="display_user" value="display">
+            <!-- displays info from user data dictionary, {{}} are placeholders for db fields-->
+            <p>Full Name:  {{user.first_name}} {{user.last_name}}</p>
+            <p>Email:  {{user.email}}</p>
+            <p>Created On:  {{user.created_at}}</p>
+            <p>Last Updated On:  {{user.updated_at}}</p>
+        </form>
+        <ul>
+            <li><a href="/users/{{user.id}}/edit">Edit</a><span> | </span></li>
+            <li><a href="/users">Delete</a></li>
+        </ul>
+    </body>
+</html>
